@@ -1,0 +1,23 @@
+{% load static %}
+{% load blog_tags %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+</head>
+<body>
+{% block mainmenu %}
+{% get_menu as menu %}
+{% for m in menu %}
+<ul>
+    <li><p>{{m.title}}</p></li>
+</ul>
+{% endfor %}
+<hr>
+    {% get_categories %}
+{% endblock mainmenu %}
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

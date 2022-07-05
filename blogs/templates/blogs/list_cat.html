@@ -1,0 +1,8 @@
+{% for c in cats %}
+	{% if c.pk == cat_selected %}
+	    <li>{{c.name}}</li>
+	{% else %}
+	    <li><a href="{{c.ab_url}}">{{c.name}}</li>
+	{% endif %}
+{% endfor %}
+<hr>

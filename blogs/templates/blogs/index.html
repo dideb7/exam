@@ -1,0 +1,20 @@
+{% extends 'blogs/base.html' %}
+
+
+{% block content %}
+
+<ul>
+	{% for p in posts %}
+	{% if p.photo %}
+		<p><img class="img-article-left thumb" src="{{p.photo.url}}"></p>
+	{% endif %}
+	<p><i>Категория: {{p.cat}} | Дата публикации : {{p.time_create|date:"d-m-y H:i:s"}}</i></p>
+	<li>
+		<h2>{{p.title}}</h2>
+		<p>{{p.content | linebreaks | truncatewords:25}}</p>
+		<p><a href="{{ p.ab_url }}"><i>Читать пост</i></a></p>
+		<hr>
+	</li>
+	{% endfor %}
+</ul>
+{% endblock %}

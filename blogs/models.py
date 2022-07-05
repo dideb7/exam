@@ -3,11 +3,11 @@ from django.urls import reverse
 
 
 class Article(models.Model):
-    title = models.CharField(max_length=200)
-    content = models.TextField()
-    photo = models.ImageField(upload_to='photo/%Y/%m/%d/')
-    time_create = models.DateTimeField(auto_now_add=True)
-    cat = models.ForeignKey('Category', on_delete=models.PROTECT, null=True)
+    title = models.CharField(max_length=200, verbose_name='Заголовок')
+    content = models.TextField(verbose_name='Статья')
+    photo = models.ImageField(upload_to="photos/%Y/%m/%d/", verbose_name='Фотография')
+    time_create = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
+    cat = models.ForeignKey('Category', on_delete=models.PROTECT, null=True, verbose_name='Категория')
 
     def __str__(self):
         return self.title
@@ -22,10 +22,13 @@ class Article(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=100, db_index=True)
+    name = models.CharField(max_length=100, db_index=True, verbose_name='Название категории')
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('categ', kwargs={'cat_id': self.pk})
 
     class Meta:
         verbose_name = 'Категорию'
