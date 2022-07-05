@@ -10,12 +10,12 @@ menu = [{'title': "О сайте", 'url_name': 'about'},
 register = template.Library()
 
 
-@register.simple_tag()
+@register.inclusion_tag('blogs/list_menu.html')
 def get_menu():
-    return menu
+    return {'menu': menu}
 
 
 @register.inclusion_tag('blogs/list_cat.html')
-def get_categories():
+def get_cat(cat_select=0):
     cats = Category.objects.all()
-    return {'cats': cats}
+    return {'cats': cats, 'cat_selected': cat_select}

@@ -7,14 +7,23 @@
 </head>
 <body>
 {% block mainmenu %}
-{% get_menu as menu %}
+{% get_menu %}
 {% for m in menu %}
 <ul>
     <li><p>{{m.title}}</p></li>
 </ul>
 {% endfor %}
 <hr>
-    {% get_categories %}
+<ul>
+{% if cat_selected == 0 %}
+	<h4>Рубрики</h4>
+{% else %}
+	<h4><a href="{% url 'home' %}">Рубрики</a></h4>
+{% endif %}
+</ul>
+
+{% get_cat cat_selected %}
+
 {% endblock mainmenu %}
 {% block content %}
 {% endblock %}

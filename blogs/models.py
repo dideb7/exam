@@ -7,7 +7,7 @@ class Article(models.Model):
     content = models.TextField(verbose_name='Статья')
     photo = models.ImageField(upload_to="photos/%Y/%m/%d/", verbose_name='Фотография')
     time_create = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
-    cat = models.ForeignKey('Category', on_delete=models.PROTECT, null=True, verbose_name='Категория')
+    cat = models.ForeignKey('Category', on_delete=models.PROTECT, related_name='articles', null=True, verbose_name='Категория')
 
     def __str__(self):
         return self.title

@@ -2,7 +2,6 @@
 
 
 {% block content %}
-
 <ul>
 	{% for p in posts %}
 	{% if p.photo %}
@@ -12,7 +11,7 @@
 	<li>
 		<h2>{{p.title}}</h2>
 		<p>{{p.content | linebreaks | truncatewords:25}}</p>
-		<p><a href="{{ p.ab_url }}"><i>Читать пост</i></a></p>
+		<p><a href="{{ p.get_absolute_url }}"><i>Читать пост</i></a></p>
 		<hr>
 	</li>
 	{% endfor %}
