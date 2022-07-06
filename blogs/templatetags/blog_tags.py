@@ -2,7 +2,7 @@ from django import template
 from blogs.models import *
 
 menu = [{'title': "О сайте", 'url_name': 'about'},
-        {'title': "Добавить статью", 'url_name': 'add_page'},
+        {'title': "Добавить статью", 'url_name': 'addpage'},
         {'title': "Обратная связь", 'url_name': 'contact'},
         {'title': "Войти", 'url_name': 'login'}
         ]

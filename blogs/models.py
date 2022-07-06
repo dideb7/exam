@@ -8,7 +8,7 @@ class Article(models.Model):
     photo = models.ImageField(upload_to="photos/%Y/%m/%d/", verbose_name='Фотография')
     time_create = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     cat = models.ForeignKey('Category', on_delete=models.PROTECT, related_name='articles', null=True, verbose_name='Категория')
-    slug = models.SlugField(max_length=100, unique=True, db_index=True, verbose_name='адрес')
+    slug = models.SlugField(max_length=100, unique=True, db_index=True, verbose_name='URL-адрес')
 
     def __str__(self):
         return self.title

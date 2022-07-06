@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, Http404
 from .models import *
+from .forms import AddPF
 
 
 def index(request):
@@ -31,3 +32,14 @@ def show_category(request, cat_slug):
         'cat_selected': cat_id,
     }
     return render(request, 'blogs/index.html', context=context)
+
+
+def addpage(request):
+    if request.method == 'POST':
+        form = AddPF(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = AddPF()
+    return render(request, 'blogs/addpage.html', {'form': form, 'title': 'Добавление статьи'})
