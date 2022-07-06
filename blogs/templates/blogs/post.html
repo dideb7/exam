@@ -1,0 +1,16 @@
+{% extends 'blogs/base.html' %}
+
+{% block content %}
+<title>{{post.title}}</title>
+<ul>
+	{% if post.photo %}
+		<p><img class="img-article-left thumb" src="{{post.photo.url}}"></p>
+	{% endif %}
+	<p><i>Категория: {{post.cat}} | Дата публикации : {{post.time_create|date:"d-m-y H:i:s"}}</i></p>
+	<li>
+		<h2>{{ppost.title}}</h2>
+		<p>{{post.content | linebreaks}}</p>
+		<hr>
+	</li>
+</ul>
+{% endblock %}
