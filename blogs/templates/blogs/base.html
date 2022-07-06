@@ -3,15 +3,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Главная страница</title>
+    <title>{{title}}</title>
 
 </head>
 <body>
 {% block mainmenu %}
-{% get_menu %}
 {% for m in menu %}
 <ul>
-    <li><p>{{m.title}}</p></li>
+    <li><a href="{{m.url_name}}">{{m.title}}</a></li>
 </ul>
 {% endfor %}
 <hr>

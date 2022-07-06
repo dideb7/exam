@@ -16,4 +16,3 @@ class AddPF(forms.ModelForm):
             'content': forms.Textarea(attrs={'cols': 70, 'rows': 20})
         }
 
-  

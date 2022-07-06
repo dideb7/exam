@@ -1,18 +1,7 @@
 from django import template
 from blogs.models import *
 
-menu = [{'title': "О сайте", 'url_name': 'about'},
-        {'title': "Добавить статью", 'url_name': 'addpage'},
-        {'title': "Обратная связь", 'url_name': 'contact'},
-        {'title': "Войти", 'url_name': 'login'}
-        ]
-
 register = template.Library()
-
-
-@register.inclusion_tag('blogs/list_menu.html')
-def get_menu():
-    return {'menu': menu}
 
 
 @register.inclusion_tag('blogs/list_cat.html')
