@@ -16,14 +16,21 @@
 <hr>
 <ul>
 {% if cat_selected == 0 %}
-	<h4>Рубрики</h4>
+	<h4>Главная страница</h4>
 {% else %}
-	<h4><a href="{% url 'home' %}">Рубрики</a></h4>
+	<h4><a href="{% url 'home' %}">Главная страница</a></h4>
 {% endif %}
 </ul>
-
-{% get_cat cat_selected %}
-
+<ul>
+	{% for c in cats %}
+		{% if c.pk == cat_selected %}
+			<li>{{c.name}}</li>
+		{% else %}
+			<li><a href="{{c.get_absolute_url}}">{{c.name}}</a></li>
+		{% endif %}
+	{% endfor %}
+</ul>
+<hr>
 {% endblock mainmenu %}
 {% block content %}
 {% endblock %}
