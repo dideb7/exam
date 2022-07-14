@@ -14,6 +14,7 @@
 </ul>
 {% endfor %}
 <hr>
+<a href="{% url 'register' %}">Регистрация</a> | <a href="{% url 'login' %}">Войти</a>
 <ul>
 {% if cat_selected == 0 %}
 	<h4>Главная страница</h4>

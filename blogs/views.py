@@ -1,5 +1,6 @@
 from pprint import pprint
 
+from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, Http404
 from django.urls import reverse_lazy
@@ -55,8 +56,22 @@ class AddPage(LoginRequiredMixin, DataMixin, CreateView):
     success_url = reverse_lazy('home')
     login_url = reverse_lazy('home')
 
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(title='Добавление поста')
         return dict(list(context.items()) + list(c_def.items()))
+
+
+class RegisterUser(DataMixin, CreateView):
+    form_class = UserCreationForm
+    template_name = 'blogs/register.html'
+    success_url = reverse_lazy('login')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title='Регистрация')
+        return dict(list(context.items()) + list(c_def.items()))
+
+
+def insite(reqest):
+    return HttpResponse('Заходи')
